@@ -41,7 +41,8 @@ async def debug_handler(update, context):
 # 🧩 Регистрация хендлеров
     application.add_handler(CommandHandler("start", start.start_handler))
     application.add_handler(CallbackQueryHandler(start.callback_handler, pattern=
-    application.add_handler(MessageHandler(filters.ALL, debug_handler))"^start_interaction$|^market_"))
+    application.add_handler(CallbackQueryHandler(start.callback_handler, pattern="^start_interaction$|^market_"))
+    application.add_handler(MessageHandler(filters.ALL, debug_handler))
     application.add_handler(CallbackQueryHandler(menu.menu_handler, pattern="^menu_"))
 
     # ✍️ Генерация названий и описаний
