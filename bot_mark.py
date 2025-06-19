@@ -48,10 +48,12 @@ def main():
 
     # 🌐 Вебхук запуск
     application.run_webhook(
-        listen="0.0.0.0",
-        port=PORT,
-        webhook_url=WEBHOOK_URL,
-    )
+    listen="0.0.0.0",
+    port=PORT,
+    webhook_url=f"https://{RENDER_SERVICE_NAME}.onrender.com/{BOT_TOKEN}",
+    # 👇 добавь это!
+    path=f"/{BOT_TOKEN}",
+)
 
 
 if __name__ == "__main__":
