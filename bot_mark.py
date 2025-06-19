@@ -8,6 +8,9 @@ from telegram.ext import (
     filters,
 )
 from db import init_db
+from telegram.ext import MessageHandler, filters
+
+
 from handlers import start, menu, generation, review, fallback
 
 # Логирование
@@ -30,9 +33,15 @@ def main():
     # ⚙️ Создание Telegram-приложения
     application = Application.builder().token(BOT_TOKEN).build()
 
-    # 🧩 Регистрация хендлеров
+    
+# 🔍 Хендлер для отладки — вывод всех апдейтов
+async def debug_handler(update, context):
+    print("📝 Получено сообщение:", update)
+
+# 🧩 Регистрация хендлеров
     application.add_handler(CommandHandler("start", start.start_handler))
-    application.add_handler(CallbackQueryHandler(start.callback_handler, pattern="^start_interaction$|^market_"))
+    application.add_handler(CallbackQueryHandler(start.callback_handler, pattern=
+    application.add_handler(MessageHandler(filters.ALL, debug_handler))"^start_interaction$|^market_"))
     application.add_handler(CallbackQueryHandler(menu.menu_handler, pattern="^menu_"))
 
     # ✍️ Генерация названий и описаний

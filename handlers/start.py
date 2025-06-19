@@ -6,6 +6,8 @@ from handlers.menu import send_main_menu
 
 # Хендлер на команду /start
 async def start_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    print('✅ /start вызван')
+    print('update:', update)
     keyboard = InlineKeyboardMarkup([
         [InlineKeyboardButton("🚀 Начать взаимодействие", callback_data="start_interaction")]
     ])
