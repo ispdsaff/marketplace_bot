@@ -51,8 +51,7 @@ def main():
     listen="0.0.0.0",
     port=PORT,
     webhook_url=f"https://{RENDER_SERVICE_NAME}.onrender.com/{BOT_TOKEN}",
-    # 👇 добавь это!
-    path=f"/{BOT_TOKEN}",
+    webhook_path=f"/{BOT_TOKEN}",  # ✅ правильный параметр
 )
 
 
